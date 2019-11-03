@@ -2,12 +2,12 @@
 Summary:	LAL wrapping of the LILO/Virgo Frame library
 Summary(pl.UTF-8):	Obudowanie LAL do biblioteki LILO/Virgo Frame
 Name:		lal-frame
-Version:	1.4.3
+Version:	1.4.5
 Release:	1
 License:	GPL v2+
 Group:		Libraries
 Source0:	http://software.ligo.org/lscsoft/source/lalsuite/lalframe-%{version}.tar.xz
-# Source0-md5:	f7e471322ac062c0bc9ffd3179b770fb
+# Source0-md5:	9cab8a8560189e46eb67f464aa210a92
 Patch0:		%{name}-env.patch
 URL:		https://wiki.ligo.org/DASWG/LALSuite
 BuildRequires:	autoconf >= 2.63
@@ -124,7 +124,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS README
+%doc AUTHORS README.md
 %attr(755,root,root) %{_bindir}/lalfr-*
 %attr(755,root,root) %{_bindir}/lalframe_version
 %attr(755,root,root) %{_libdir}/liblalframe.so.*.*.*
