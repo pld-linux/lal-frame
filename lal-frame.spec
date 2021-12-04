@@ -2,24 +2,24 @@
 Summary:	LAL wrapping of the LILO/Virgo Frame library
 Summary(pl.UTF-8):	Obudowanie LAL do biblioteki LILO/Virgo Frame
 Name:		lal-frame
-Version:	1.4.5
+Version:	1.5.5
 Release:	1
 License:	GPL v2+
 Group:		Libraries
 Source0:	http://software.ligo.org/lscsoft/source/lalsuite/lalframe-%{version}.tar.xz
-# Source0-md5:	9cab8a8560189e46eb67f464aa210a92
+# Source0-md5:	ec22d5d44122dcda02d1ce67757ed121
 Patch0:		%{name}-env.patch
 URL:		https://wiki.ligo.org/DASWG/LALSuite
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	lal-devel >= 6.18.0
-BuildRequires:	libframe-devel
+BuildRequires:	libframe-devel >= 8.41.5
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:2
 BuildRequires:	octave-devel >= 1:3.2.0
 BuildRequires:	pkgconfig
-BuildRequires:	python-devel >= 1:2.6
-BuildRequires:	python-numpy-devel >= 1:1.7
+BuildRequires:	python3-devel
+BuildRequires:	python3-numpy-devel
 BuildRequires:	swig >= 3.0.12
 BuildRequires:	swig-python >= 2.0.12
 BuildRequires:	tar >= 1:1.22
@@ -73,18 +73,18 @@ Octave interface for LAL Frame.
 %description -n octave-lalframe -l pl.UTF-8
 Interfejs Octave do biblioteki LAL Frame.
 
-%package -n python-lalframe
+%package -n python3-lalframe
 Summary:	Python bindings for LAL Frame
 Summary(pl.UTF-8):	Wiązania Pythona do biblioteki LAL Frame
 Group:		Libraries/Python
 Requires:	%{name} = %{version}-%{release}
-Requires:	python-lal >= 6.18.0
-Requires:	python-modules >= 1:2.6
+Requires:	python3-lal >= 6.18.0
+Requires:	python3-modules >= 1:2.6
 
-%description -n python-lalframe
+%description -n python3-lalframe
 Python bindings for LAL Frame.
 
-%description -n python-lalframe -l pl.UTF-8
+%description -n python3-lalframe -l pl.UTF-8
 Wiązania Pythona do biblioteki LAL Frame.
 
 %prep
@@ -114,8 +114,6 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/etc/shrc.d
 %{__mv} $RPM_BUILD_ROOT%{_sysconfdir}/*sh $RPM_BUILD_ROOT/etc/shrc.d
 
-%py_postclean
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -128,7 +126,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/lalfr-*
 %attr(755,root,root) %{_bindir}/lalframe_version
 %attr(755,root,root) %{_libdir}/liblalframe.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/liblalframe.so.10
+%attr(755,root,root) %ghost %{_libdir}/liblalframe.so.11
 /etc/shrc.d/lalframe-user-env.csh
 /etc/shrc.d/lalframe-user-env.fish
 /etc/shrc.d/lalframe-user-env.sh
@@ -137,7 +135,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/liblalframe.so
-%{_includedir}/lal/Aggregation.h
 %{_includedir}/lal/FrameCalibration.h
 %{_includedir}/lal/LALFrStream.h
 %{_includedir}/lal/LALFrame*.h
@@ -154,9 +151,12 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/octave/*/site/oct/*/lalframe.oct
 
-%files -n python-lalframe
+%files -n python3-lalframe
 %defattr(644,root,root,755)
-%dir %{py_sitedir}/lalframe
-%attr(755,root,root) %{py_sitedir}/lalframe/_lalframe.so
-%{py_sitedir}/lalframe/*.py[co]
-%{py_sitedir}/lalframe/utils
+%dir %{py3_sitedir}/lalframe
+%attr(755,root,root) %{py3_sitedir}/lalframe/_lalframe.so
+%{py3_sitedir}/lalframe/*.py
+%{py3_sitedir}/lalframe/__pycache__
+%dir %{py3_sitedir}/lalframe/utils
+%{py3_sitedir}/lalframe/utils/*.py
+%{py3_sitedir}/lalframe/utils/__pycache__
