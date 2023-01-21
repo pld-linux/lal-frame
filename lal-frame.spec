@@ -9,7 +9,7 @@ Group:		Libraries
 Source0:	http://software.igwn.org/lscsoft/source/lalsuite/lalframe-%{version}.tar.xz
 # Source0-md5:	e25492953f9f8c065b0e528d4658f951
 Patch0:		%{name}-env.patch
-URL:		https://wiki.ligo.org/DASWG/LALSuite
+URL:		https://wiki.ligo.org/Computing/LALSuite
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	lal-devel >= 7.2.2
@@ -19,9 +19,9 @@ BuildRequires:	libtool >= 2:2
 BuildRequires:	octave-devel >= 1:3.2.0
 BuildRequires:	pkgconfig
 BuildRequires:	python3-devel >= 1:3.5
-BuildRequires:	python3-numpy-devel
+BuildRequires:	python3-numpy-devel >= 1:1.7
 BuildRequires:	swig >= 4.1.0
-BuildRequires:	swig-python >= 2.0.12
+BuildRequires:	swig-python >= 3.0.11
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	zlib-devel
