@@ -81,6 +81,7 @@ Group:		Libraries/Python
 Requires:	%{name} = %{version}-%{release}
 Requires:	python3-lal >= 7.2.2
 Requires:	python3-modules >= 1:3.5
+Obsoletes:	python-lalframe < 1.5
 
 %description -n python3-lalframe
 Python bindings for LAL Frame.
