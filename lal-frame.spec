@@ -7,7 +7,7 @@ Summary:	LAL wrapping of the LILO/Virgo Frame library
 Summary(pl.UTF-8):	Obudowanie LAL do biblioteki LILO/Virgo Frame
 Name:		lal-frame
 Version:	3.0.4
-Release:	2
+Release:	3
 License:	GPL v2+
 Group:		Libraries
 Source0:	http://software.igwn.org/lscsoft/source/lalsuite/lalframe-%{version}.tar.xz
